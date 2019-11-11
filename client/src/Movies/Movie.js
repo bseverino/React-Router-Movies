@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
 import MovieCard from './MovieCard';
 
 const Movie = (props) => {
@@ -19,20 +20,23 @@ const Movie = (props) => {
           console.error(error);
         });
 
-  },[]);
+  },[props.match.params.id]);
   
   // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = () => {
-  //   const addToSavedList = props.addToSavedList;
-  //   addToSavedList(movie)
-  // }
+  const saveMovie = () => {
+    const addToSavedList = props.addToSavedList;
+    addToSavedList(movie)
+  }
 
   if (!movie) {
     return <div>Loading movie information...</div>;
   }
 
   return (
-    <MovieCard title={movie.title} director={movie.director} metascore={movie.metascore} stars={movie.stars} />
+    <div>
+      <MovieCard title={movie.title} director={movie.director} metascore={movie.metascore} stars={movie.stars} />
+      <button onClick={() => saveMovie()}>Save Movie</button>
+    </div>
   );
 }
 
