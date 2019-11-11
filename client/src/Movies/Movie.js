@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import MovieCard from './MovieCard';
 
@@ -34,7 +35,7 @@ const Movie = (props) => {
 
   return (
     <div>
-      <MovieCard title={movie.title} director={movie.director} metascore={movie.metascore} stars={movie.stars} />
+      <MovieCard key={movie.index} title={movie.title} director={movie.director} metascore={movie.metascore} stars={movie.stars} />
       <button onClick={() => saveMovie()}>Save Movie</button>
     </div>
   );
